@@ -1,5 +1,6 @@
 # ALX Project Nexus - E‑commerce Site
 <div align="center">
+
 ![Logo](https://via.placeholder.com/150x150/1f77b4/ffffff?text=ALX+API)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://python.org)
 [![Django](https://img.shields.io/badge/django-4.0+-green.svg)](https://djangoproject.com)
@@ -975,14 +976,18 @@ If you discover a security vulnerability, please:
 5. We will work with you to resolve the issue
 ---
 <div align="center">
+
 ### 🌟 Star History
 [![Star History Chart](https://api.star-history.com/svg?repos=GemmechuBekele/alx-project-nexus&type=Date)](https://star-history.com/#GemmechuBekele/alx-project-nexus&Date)
+
 ### 👥 Contributors
 Thanks to all contributors! 🎉
 [![Contributors](https://contrib.rocks/image?repo=GemmechuBekele/alx-project-nexus)](https://github.com/GemmechuBekele/alx-project-nexus/graphs/contributors)
+
 ### ❤️ Made with Love
 **Built with ❤️ by the ALX ProDev Backend Engineering Program**
 *Empowering the next generation of backend engineers in Africa*
+
 [⬆ Back to Top](#alx-project-nexus---e-commerce-site)
 </div>
 ```
