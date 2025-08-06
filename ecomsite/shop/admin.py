@@ -1,0 +1,25 @@
+from django.contrib import admin
+from .models import Products, Order
+# Register your models here.
+
+admin.site.site_header = "Ecommerce Site"
+admin.site.site_title = "Digital Shopping"
+admin.site.index_title = "Manage Digital Shopping"
+
+
+class ProductsAdmin(admin.ModelAdmin):
+
+    def change_category_to_default(self, request, queryset):
+        queryset.update(category="default")
+
+    change_category_to_default.short_description = 'Default Category'
+    list_display = ('title', 'price', 'discount_price',
+                    'category', 'description')
+    search_fields = ('description', )
+    actions = ('change_category_to_default',)
+    list_editable = ('price', 'category',
+                     'discount_price', 'description', )
+
+
+admin.site.register(Products, ProductsAdmin)
+admin.site.register(Order)

@@ -1,0 +1,11 @@
+.card-text {
+    color: green;
+    font-weight: 800;
+}
+.card-title{
+    font-weight: 900;
+}
+.card {
+    margin-bottom: 30px;
+}
+
