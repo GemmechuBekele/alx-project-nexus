@@ -1,0 +1,41 @@
+{% extends "shop/index.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-primary mb-4 text-center">🚀 Key Features of Our Ecommerce Platform</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card border-info shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-info">🔍 Advanced Search</h5>
+                    <p class="card-text">Quickly find the products you love with our smart filtering and search tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card border-success shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-success">💳 Secure Checkout</h5>
+                    <p class="card-text">Enjoy a smooth and secure checkout experience with multiple payment options.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-4 mt-md-0">
+            <div class="card border-warning shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">🚚 Fast Delivery</h5>
+                    <p class="card-text">Get your products delivered quickly and reliably to your doorstep.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{% url 'home' %}" class="btn btn-outline-primary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

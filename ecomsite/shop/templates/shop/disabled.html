@@ -1,0 +1,16 @@
+{% extends "shop/index.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-danger text-center shadow">
+        <h2 class="text-danger">⚠️ This Page is Currently Disabled</h2>
+        <p class="mb-0">We’ve temporarily disabled this section for demo or maintenance purposes.</p>
+    </div>
+
+    <div class="card border-danger shadow-sm mt-4">
+        <div class="card-body text-center">
+            <p>We are working hard behind the scenes to improve your experience. Please check back later.</p>
+            <a href="{% url 'home' %}" class="btn btn-outline-danger mt-2">Return to Homepage</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

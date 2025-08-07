@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.title }}</title>
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4">
+            <div class="row">
+                <!-- Product Image -->
+                <div class="col-md-5 text-center">
+                    <img src="{{ product.image }}" class="img-fluid rounded mb-3 shadow" alt="{{ product.title }}">
+                </div>
+
+                <!-- Product Details -->
+                <div class="col-md-7">
+                    <h2 class="mb-3 font-weight-bold">{{ product.title }}</h2>
+
+                    <h4 class="text-success mb-3">
+                        ${{ product.price }}
+                        {% if product.discount_price %}
+                        <small class="text-muted ml-2"><del>${{ product.discount_price }}</del></small>
+                        {% endif %}
+                    </h4>
+
+                    <p class="text-secondary mb-4" style="font-size: 1.1rem;">
+                        {{ product.description }}
+                    </p>
+
+                    <div class="d-flex">
+                        <button id="{{ product.id }}" class="btn btn-warning mr-3 atc">Add to Cart</button>
+                        <a href="/" class="btn btn-secondary">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS for Bootstrap & Popover Cart -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Reuse Your Existing Cart Logic -->
+    <script>
+        // Load cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart') || '{}');
+
+        // Add to cart
+        $(document).on('click', '.atc', function () {
+            const itemId = this.id;
+            const itemName = "{{ product.title }}";
+            const itemPrice = parseFloat("{{ product.price }}");
+
+            if (cart[itemId]) {
+                cart[itemId][0] += 1;
+                cart[itemId][2] += itemPrice;
+            } else {
+                cart[itemId] = [1, itemName, itemPrice];
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(itemName + " added to cart!");
+        });
+    </script>
+</body>
+
+</html>
