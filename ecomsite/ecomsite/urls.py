@@ -16,19 +16,57 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework import routers
 from shop import views
-from shop.views import ProductViewset, OrderViewset
+from shop.views import (
+    ProductViewSet, OrderViewset,
+    API, DetailsAPI, IndexAPI,
+    CheckoutAPI, CategoryViewSet
+)
+from django.urls import re_path
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Shop API",
+        default_version='v1',
+        description="Shop API with products, categories, orders",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="gemmechu.bekele.berga@gmail.com"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
+
 router = routers.DefaultRouter()
-router.register('products', ProductViewset, basename='products')
+router.register('categories', CategoryViewSet, basename='categories')
+router.register('products', ProductViewSet, basename='products')
 router.register('orders', OrderViewset, basename='orders')
 
 urlpatterns = [
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include(router.urls)),
+    path('api-swagger/', API.as_view(), name='api-swagger'),
+    path(
+        'swagger/', schema_view.with_ui('swagger',
+                                        cache_timeout=0),
+        name='schema-swagger-ui'
+    ),
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
     path('features/', views.features, name='features'),
     path('disabled/', views.disabled, name='disabled'),
     path('checkout/', views.checkout, name='checkout'),
     path('<int:id>/', views.product_detail, name='product_detail')
+]
+urlpatterns += [
+    path('api/checkout/', CheckoutAPI.as_view(), name='api-checkout'),
+    path('api/details/', DetailsAPI.as_view(), name='api-details'),
+    path('api/index/', IndexAPI.as_view(), name='api-index'),
+
 ]

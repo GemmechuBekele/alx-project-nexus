@@ -4,9 +4,9 @@
 ![Logo](https://via.placeholder.com/150x150/1f77b4/ffffff?text=ALX+API)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://python.org)
 [![Django](https://img.shields.io/badge/django-4.0+-green.svg)](https://djangoproject.com)
-[![React](https://img.shields.io/badge/react-18+-blue.svg)](https://reactjs.org)
-[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://docker.com)
-![Postman Tests](https://github.com/GemmechuBekele/alx-project-nexus/workflows/Postman%20API%20Tests/badge.svg)
+[![jQuery](https://img.shields.io/badge/jquery-3.6+-blue.svg)](https://jquery.com)
+[![Bootstrap](https://img.shields.io/badge/bootstrap-5+-purple.svg)](https://getbootstrap.com)
+[![Swagger Docs](https://img.shields.io/badge/docs-Swagger-blue.svg)](https://swagger.io)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/GemmechuBekele/alx-project-nexus/actions)
 [![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)](https://codecov.io)
@@ -28,7 +28,6 @@
 - [🚀 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Quick Start](#quick-start)
-  - [Docker Setup](#docker-setup)
   - [Environment Configuration](#environment-configuration)
 - [📚 API Documentation](#api-documentation)
 - [📁 Project Structure](#project-structure)
@@ -44,47 +43,56 @@
 - [📞 Support](#support)
 
 ## 🎯 Overview
-**ALX Project Nexus** is a robust, scalable, and production-ready e-commerce backend Site developed as part of the **ALX ProDev Backend Engineering program**. This enterprise-grade RESTful API provides comprehensive functionality for modern e-commerce platforms, featuring advanced product management, secure user authentication, sophisticated order processing, and seamless payment integration.
+**ALX Project Nexus** is a robust, scalable, and production-ready e-commerce backend site developed as part of the **ALX ProDev Backend Engineering Program**.
+This enterprise-grade RESTful API delivers comprehensive functionality tailored for modern e-commerce platforms, including:
+
+- 🔒 **Secure user authentication and session management**
+- 📦 **Advanced product and category management**
+- 🧾 **Streamlined order processing and checkout workflows**
+- 📊 **Interactive front-end powered by jQuery and styled with Bootstrap 4**
+- 📘 **API documentation and testing powered by Swagger (OpenAPI)**
+
+Designed with scalability, clarity, and modularity in mind, this project serves as a solid foundation for real-world e-commerce applications.
+
 ### 🎯 Project Goals
+
 - Build a **scalable** and **maintainable** e-commerce platform
 - Implement **industry best practices** and **security standards**
 - Demonstrate **advanced Django** and **REST API** development skills
 - Create a **production-ready** application with comprehensive testing
+
 ### 🌟 Key Highlights
+
 - **Enterprise-grade architecture** with clean code principles
 - **Comprehensive API coverage** for all e-commerce operations
-- **Advanced security features** including knox authentication
+- **Advanced security features** including Knox authentication
 - **High-performance** database optimization and caching
 - **Extensive testing suite** with 95%+ code coverage
-- **Production-ready** with Docker containerization
+- **Production-ready** and easily deployable
+
 ## ✨ Features
+
 ### 🔐 Authentication & Authorization
 - **Knox-based authentication** with secure token management
 - **Role-based access control** (Admin, Customer, Staff)
-- **Multi-factor authentication** support
-- **Password reset** and email verification
-- **OAuth integration** (Google, Facebook, GitHub)
-### 📦 Product Management
-- **Advanced product catalog** with categories and subcategories
-- **Inventory tracking** with real-time stock updates
-- **Product variants** (size, color, material)
-- **Rich media support** (images, videos, 360° views)
-- **SEO-optimized** product URLs and metadata
-- **Product reviews** and rating system
-### 🛒 Order Management
-- **Shopping cart** with persistent sessions
-- **Order lifecycle management** (pending, processing, shipped, delivered)
-- **Order tracking** with real-time status updates
-- **Bulk order processing** for B2B clients
-- **Order history** and reorder functionality
-- **Advanced filtering** and search capabilities
-### 💳 Payment Processing
-- **Multiple payment gateways** (Stripe, PayPal, Square)
-- **Secure payment processing** with PCI compliance
-- **Subscription billing** and recurring payments
-- **Refund management** and partial refunds
-- **Multi-currency support** with real-time exchange rates
-- **Payment analytics** and reporting
+- **Multi-factor authentication (MFA)** support for enhanced security
+- **Password reset** and **email verification** workflows
+- **OAuth integration** with popular providers (Google, Facebook, GitHub)
+
+### 🛒 E-commerce Core
+- Product catalog with categories and search functionality
+- Shopping cart and order management
+- Secure checkout process with order tracking
+
+### 📱 API & Documentation
+- RESTful API built with Django REST Framework
+- Swagger/OpenAPI documentation for easy integration
+
+### ⚙️ Additional Features
+- Pagination for product listings
+- Custom permissions and role-based access control
+- Responsive UI templates for seamless user experience
+
 ### 🔍 Advanced Features
 - **GraphQL API** for flexible data querying
 - **Real-time notifications** using WebSockets
@@ -93,31 +101,39 @@
 - **Analytics dashboard** with business insights
 - **API rate limiting** and throttling
 - **Comprehensive logging** and monitoring
+
 ## 🏗️ Architecture
-ALX Project Nexus follows a **modular, microservices-inspired architecture** within a Django monolith, ensuring scalability and maintainability.
+
+This project follows a **modular design** within a Django monolith, ensuring scalability and maintainability.
+
 ```mermaid
 graph TB
-    A[Client Applications] --> B[Load Balancer]
-    B --> C[Django API Gateway]
-    C --> D[Authentication Service]
-    C --> E[Product Service]
-    C --> F[Order Service]
-    C --> G[Payment Service]
-    D --> H[(User Database)]
-    E --> I[(Product Database)]
-    F --> J[(Order Database)]
-    G --> K[(Payment Database)]
-    C --> L[Redis Cache]
-    C --> M[Elasticsearch]
-    C --> N[Background Tasks - Celery]
-```
+    A[Client Applications - Web] --> B[Load Balancer]
+    B --> C[Django API Gateway - DRF]
+    C --> D[Authentication & Authorization Service]
+    C --> E[Product & Catalog Service]
+    C --> F[Order & Checkout Service]
+    D --> G[(User Database)]
+    E --> H[(Product Database - PostgreSQL)]
+    F --> I[(Order Database)]
+    C --> J[Redis Cache]
+    C --> K[Background Tasks - Celery]
+  ```
+### Key Points:
+- **Authentication Service** → Knox authentication, role-based access.
+- **Product Service** → Manages catalog, categories, and search.
+- **Order Service** → Handles cart, checkout, and order processing.
+- **Caching & Background Jobs** → Redis for caching and Celery for async tasks.
+
+---
 
 ### 🔧 Design Patterns
-Repository Pattern for data access abstraction
-Factory Pattern for payment gateway selection
-Observer Pattern for event-driven notifications
-Strategy Pattern for shipping calculations
-Decorator Pattern for API permissions and caching
+
+- **Repository Pattern** → Abstracts data access logic from business logic, making it easier to swap databases or data sources.
+- **Factory Pattern** → Dynamically selects and initializes the appropriate payment gateway during checkout.
+- **Observer Pattern** → Powers event-driven notifications (e.g., order status changes trigger user alerts).
+- **Strategy Pattern** → Calculates shipping costs using different strategies based on location, weight, or courier.
+- **Decorator Pattern** → Adds cross-cutting features such as API permissions and caching without modifying core logic.
 
 ## 🛠 Technology Stack
 
@@ -128,8 +144,8 @@ Decorator Pattern for API permissions and caching
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+
 ### DevOps & Infrastructure
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
@@ -138,43 +154,46 @@ Decorator Pattern for API permissions and caching
 
 | Category | Technology | Purpose |
 |----------|-----------|---------|
-| **Frontend Framework** | React js Framework | User ui development |
 | **Backend Framework** | Django REST Framework 3.14+ | API development and serialization |
 | **Language** | Python 3.9+ | Core programming language |
 | **Database** | PostgreSQL 14+ | Primary data storage |
 | **Caching** | Redis 6+ | Session storage and caching |
 | **Search Engine** | Elasticsearch 8+ | Advanced search capabilities |
 | **Authentication** | Knox (Django REST Knox) | Stateful authentication |
-| **Containerization** | Docker & Docker Compose | Application containerization |
-| **CI/CD** | GitHub Actions | Automated testing and deployment |
+| **Frontend Library** | Bootstrap 5+ | Responsive UI styling |
+| **Frontend Library** | jQuery 3+ | DOM manipulation and AJAX requests |
 | **API Documentation** | Swagger/OpenAPI, Redoc | Interactive API documentation |
 | **Alternative Query** | GraphQL (Graphene) | Flexible data querying |
 | **Task Queue** | Celery + Redis | Background task processing |
 | **Monitoring** | Sentry, Prometheus | Error tracking and monitoring |
 | **Testing** | Pytest, Factory Boy | Comprehensive testing suite |
 | **Code Quality** | Black, Flake8, MyPy | Code formatting and linting |
+
 ## 🚀 Getting Started
+
 ### Prerequisites
 Ensure you have the following installed on your development machine:
+
 | Tool | Version | Purpose |
 |------|---------|---------|
 | **Python** | 3.9+ | Core runtime environment |
-| **Docker** | 20.10+ | Containerization platform |
-| **Docker Compose** | 2.0+ | Multi-container orchestration |
-| **PostgreSQL** | 14+ | Database server (if not using Docker) |
+| **PostgreSQL** | 14+ | Database server |
 | **Git** | 2.30+ | Version control |
-| **Node.js** | 16+ | Frontend development (optional) |
+| **Bootstrap** | 5+ | Frontend styling |
+| **jQuery** | 3+ | JavaScript utilities and AJAX |
+| **Swagger/OpenAPI** | Latest | API documentation |
+
 
 ### Quick Start
-Get ALX Project Nexus running in under 5 minutes:
+Get ALX Project Nexus running in under 5-10 minutes:
 ```bash
 # 1. Clone and navigate to the project
 git clone https://github.com/GemmechuBekele/alx-project-nexus.git
 cd alx-project-nexus
-# 2. Start with Docker (Recommended)
-docker-compose up --build
-# 3. Access the application
-# API: http://localhost:8000
+
+# 2. Access the application
+# Site: http://localhost:8000
+# API: http://localhost:8000/api
 # Admin: http://localhost:8000/admin
 # Docs: http://localhost:8000/swagger/
 ```
@@ -188,18 +207,18 @@ cd alx-project-nexus
 2. **Create and activate virtual environment**
 ```bash
 # Using venv
-python -m venv venv
-source venv/bin/activate # Linux/Mac
-# venv\Scripts\activate # Windows
-# Or using conda
-conda create -n nexus python=3.9
-conda activate nexus
+python -m venv env
+source env/bin/activate # Linux/Mac
+# env\Scripts\activate # Windows
+
 ```
 3. **Install dependencies**
 ```bash
 # Production dependencies
+pip freeze > requirements.txt
 pip install -r requirements.txt
 # Development dependencies
+pip freeze > requirements-dev.txt
 pip install -r requirements-dev.txt
 ```
 4. **Environment setup**
@@ -207,7 +226,7 @@ pip install -r requirements-dev.txt
 # Copy environment template
 cp .env.example .env
 # Edit the .env file with your configuration
-nano .env
+vim .env
 ```
 ### Environment Configuration
 Create a `.env` file with the following configuration:
@@ -223,9 +242,9 @@ DJANGO_SETTINGS_MODULE=ecommerce.settings.development
 # DATABASE CONFIGURATION
 # =============================================================================
 DATABASE_URL=postgres://nexus_user:secure_password@localhost:5432/nexus_db
-DB_NAME=nexus_db
-DB_USER=nexus_user
-DB_PASSWORD=secure_password
+DB_NAME=ecom_db
+DB_USER=Gemme
+DB_PASSWORD=Gemme7
 DB_HOST=localhost
 DB_PORT=5432
 # =============================================================================
@@ -234,23 +253,7 @@ DB_PORT=5432
 REDIS_URL=redis://localhost:6379/0
 CELERY_BROKER_URL=redis://localhost:6379/1
 CELERY_RESULT_BACKEND=redis://localhost:6379/2
-# =============================================================================
-# EMAIL CONFIGURATION
-# =============================================================================
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER=your_email@gmail.com
-EMAIL_HOST_PASSWORD=your_app_specific_password
-# =============================================================================
-# PAYMENT GATEWAYS
-# =============================================================================
-STRIPE_PUBLIC_KEY=pk_test_your_stripe_public_key
-STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
-PAYPAL_CLIENT_ID=your_paypal_client_id
-PAYPAL_CLIENT_SECRET=your_paypal_client_secret
-# =============================================================================
+
 # THIRD-PARTY SERVICES
 # =============================================================================
 SENTRY_DSN=https://your_sentry_dsn@sentry.io/project_id
@@ -273,9 +276,6 @@ python manage.py collectstatic --noinput
 python manage.py makemigrations
 # Apply migrations
 python manage.py migrate
-# Load initial data (optional)
-python manage.py loaddata fixtures/initial_data.json
-```
 6. **Create superuser**
 ```bash
 python manage.py createsuperuser
@@ -289,23 +289,7 @@ celery -A ecommerce worker -l info
 # Start Celery beat scheduler (in another terminal)
 celery -A ecommerce beat -l info
 ```
-### Docker Setup
-For production-like environment:
-```bash
-# Development environment
-docker-compose up --build
-# Production environment
-docker-compose -f docker-compose.prod.yml up --build
-# Run specific services
-docker-compose up db redis # Only database and cache
-# Run commands in container
-docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py createsuperuser
-# View logs
-docker-compose logs -f web
-# Clean up
-docker-compose down -v # Remove containers and volumes
-```
+
 ## 📚 API Documentation
 ALX Project Nexus provides comprehensive API documentation with interactive testing capabilities.
 ### 📖 Documentation Access
@@ -314,7 +298,7 @@ ALX Project Nexus provides comprehensive API documentation with interactive test
 | **Swagger UI** | `http://localhost:8000/swagger/` | Interactive API testing interface |
 | **Redoc** | `http://localhost:8000/redoc/` | Clean, responsive documentation |
 | **OpenAPI Schema** | `http://localhost:8000/api/schema/` | Raw OpenAPI 3.0 specification |
-| **Postman Collection** | `docs/postman/` | Ready-to-import Postman collection |
+
 ### 🔗 Core API Endpoints
 #### Authentication Endpoints
 | Endpoint | Method | Description | Auth Required |
@@ -341,39 +325,37 @@ ALX Project Nexus provides comprehensive API documentation with interactive test
 | `/api/v1/orders/{id}/status/` | PATCH | Update order status | ✅ (Admin) |
 | `/api/v1/cart/` | GET, POST, DELETE | Shopping cart operations | ✅ |
 | `/api/v1/cart/items/` | POST, PUT, DELETE | Cart item management | ✅ |
-#### Payment Processing
-| Endpoint | Method | Description | Auth Required |
-|----------|--------|-------------|---------------|
-| `/api/v1/payments/` | POST | Process payment | ✅ |
-| `/api/v1/payments/{id}/` | GET | Payment details | ✅ |
-| `/api/v1/payments/webhooks/stripe/` | POST | Stripe webhook handler | ❌ |
-| `/api/v1/payments/refunds/` | POST | Process refund | ✅ (Admin) |
+
 ### 📝 API Usage Examples
-#### User Registration
-```bash
-curl -X POST http://localhost:8000/api/v1/auth/register/ \
--H "Content-Type: application/json" \
--d '{
-"username": "johndoe",
-"email": "john@example.com",
-"password": "SecurePassword123!",
-"first_name": "John",
-"last_name": "Doe"
-}'
-```
 #### Create Product (Admin)
 ```bash
-curl -X POST http://localhost:8000/api/v1/products/ \
--H "Content-Type: application/json" \
--H "Authorization: Bearer YOUR_KNOX_TOKEN" \
--d '{
-"name": "//",
-"description": "High-performance laptop for professionals",
-"price": "1299.99",
-"category": 1,
-"stock_quantity": 50,
-"sku": "LAPTOP-001"
-}'
+HTTP 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "count": 3,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 4,
+            "title": "Bottle",
+            "price": "60.00",
+            "discount_price": "55.00",
+            "category": {
+                "id": 5,
+                "name": "Steel Bottles"
+            },
+            "description": "Stainless Steel Water Bottles: Stunning Companions To Fulfill Your Hydration Needs\r\nWater is the essence of life, and the way you consume it matters a lot. It’s high time we ditch plastic bottles and switch over to stainless steel water bottles for our everyday hydration needs. Whether it comes to water, juices, lemonades, or any other preferred beverage, stainless steel is the way to go! Trendy-looking, sustainable, and sturdy, what else do you need for your gymming or yoga sessions, while commuting to school, or office, while enjoying your outdoor recreational activities, or simply quenching your thirst at home?",
+            "image": "https://cdn.shopify.com/s/files/1/0632/2526/6422/files/bottle-verga-sip-hot-and-cold-thermos-water-bottle-green-1000-ml-1.jpg?v=1754394741",
+            "created_at": "2025-08-08T16:08:23.264714Z",
+            "updated_at": "2025-08-08T16:08:23.264741Z"
+        }
+    ]
+}
+
 ```
 #### Place Order
 ```bash
@@ -435,7 +417,7 @@ alx-project-nexus/
 │ └── 📝 PULL_REQUEST_TEMPLATE.md
 ├── 📁 ecommerce/ # Django project configuration
 │ ├── 📁 settings/ # Environment-specific settings
-│ │ ├── ⚙️ base.py # Base configuration
+│ │ ├── ⚙️ settings.py # Settings configuration
 │ │ ├── 🔧 development.py # Development settings
 │ │ ├── 🏭 production.py # Production settings
 │ │ └── 🧪 testing.py # Test settings
@@ -460,41 +442,11 @@ alx-project-nexus/
 │ │ ├── 📄 filters.py # Custom filters
 │ │ ├── 📄 pagination.py # Custom pagination
 │ │ └── 📄 search.py # Search functionality
-│ ├── 📁 orders/ # Order processing system
-│ │ ├── 📁 migrations/
-│ │ ├── 📁 tests/
-│ │ ├── 📄 models.py # Order, OrderItem models
-│ │ ├── 📄 serializers.py # Order serializers
-│ │ ├── 📄 views.py # Order API views
-│ │ ├── 📄 tasks.py # Celery tasks
-│ │ └── 📄 signals.py # Django signals
-│ ├── 📁 payments/ # Payment gateway integration
-│ │ ├── 📁 gateways/ # Payment gateway implementations
-│ │ │ ├── 💳 stripe.py # Stripe integration
-│ │ │ ├── 💳 paypal.py # PayPal integration
-│ │ │ └── 💳 base.py # Base payment gateway
-│ │ ├── 📁 migrations/
-│ │ ├── 📁 tests/
-│ │ ├── 📄 models.py # Payment models
-│ │ ├── 📄 serializers.py # Payment serializers
-│ │ ├── 📄 views.py # Payment API views
-│ │ └── 📄 webhooks.py # Webhook handlers
-│ ├── 📁 notifications/ # Notification system
-│ │ ├── 📁 channels/ # Notification channels
-│ │ ├── 📄 models.py # Notification models
-│ │ ├── 📄 tasks.py # Background notification tasks
-│ │ └── 📄 utils.py # Notification utilities
-│ └── 📁 core/ # Shared utilities and models
-│ ├── 📄 models.py # Base models
-│ ├── 📄 permissions.py # Custom permissions
-│ ├── 📄 pagination.py # Custom pagination classes
-│ ├── 📄 exceptions.py # Custom exceptions
 │ └── 📄 utils.py # Utility functions
 ├── 📁 docs/ # Project documentation
 │ ├── 📁 api/ # API documentation
 │ ├── 📁 deployment/ # Deployment guides
 │ ├── 📁 development/ # Development setup
-│ ├── 📁 postman/ # Postman collections
 │ └── 📄 architecture.md # System architecture
 ├── 📁 scripts/ # Utility scripts
 │ ├── 🔧 setup_db.py # Database initialization
@@ -506,11 +458,6 @@ alx-project-nexus/
 │ ├── 📁 integration/ # Integration tests
 │ ├── 📁 performance/ # Performance tests
 │ └── 📄 conftest.py # Pytest configuration
-├── 📁 docker/ # Docker configurations
-│ ├── 🐳 Dockerfile.dev # Development Dockerfile
-│ ├── 🐳 Dockerfile.prod # Production Dockerfile
-│ ├── 🐳 docker-compose.yml # Development compose
-│ ├── 🐳 docker-compose.prod.yml # Production compose
 │ └── 📁 nginx/ # Nginx configuration
 ├── 📁 static/ # Static files
 │ ├── 📁 css/ # Stylesheets
@@ -520,7 +467,6 @@ alx-project-nexus/
 ├── 📁 locale/ # Internationalization files
 ├── 📄 .env.example # Environment variables template
 ├── 📄 .gitignore # Git ignore rules
-├── 📄 .dockerignore # Docker ignore rules
 ├── 📄 requirements.txt # Production dependencies
 ├── 📄 requirements-dev.txt # Development dependencies
 ├── 📄 pytest.ini # Pytest configuration
@@ -587,7 +533,6 @@ Current test coverage by module:
 | **authentication** | 98% | 245 | 5 |
 | **products** | 97% | 312 | 9 |
 | **orders** | 95% | 287 | 14 |
-| **payments** | 94% | 198 | 12 |
 | **core** | 99% | 156 | 2 |
 | **Overall** | **96%** | **1,198** | **42** |
 ### 🔧 Testing Tools & Frameworks
@@ -786,12 +731,7 @@ SESSION_CACHE_ALIAS = 'default'
 - Implemented database-level constraints and optimistic locking
 - Added atomic transactions for inventory updates
 - Created real-time inventory validation
-### Challenge 2: Payment Processing Reliability
-**Problem**: Network failures during payment processing could result in duplicate charges or lost transactions.
-**Solution**:
-- Implemented idempotency keys for all payment operations
-- Added comprehensive error handling and retry mechanisms
-- Created transaction audit trail for payment reconciliation
+
 ### Challenge 3: API Performance Optimization
 **Problem**: Complex queries and large datasets affecting API response times.
 **Solution**:
@@ -832,7 +772,7 @@ We welcome contributions to ALX Project Nexus! This project follows the **open s
 1. **🍴 Fork the repository**
 ```bash
 # Fork on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/alx-project-nexus.git
+git clone https://github.com/your-username/alx-project-nexus.git
 cd alx-project-nexus
 ```
 2. **🌿 Create a feature branch**
